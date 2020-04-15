@@ -18,15 +18,13 @@ async function run() {
   try {
     const { owner, repo } = context.repo;
 
-    const runId = parseInt(core.getInput('run_id', { required: true }));
     const artifactName = core.getInput('name', { required: true });
 
     const github = new GitHub(process.env.GITHUB_TOKEN);
 
-    const response = await github.actions.listWorkflowRunArtifacts({
+    const response = await github.actions.listArtifactsForRepo({
       owner,
-      repo,
-      run_id: runId
+      repo
     });
 
     const numberDeleted = response.data.artifacts
