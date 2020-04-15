@@ -9,12 +9,12 @@ async function run() {
 
     const { owner, repo } = context.repo;
 
-    const artifactId = core.getInput('name', { required: true });
+    const runId = core.getInput('run_id', { required: true });
 
-    const response = await github.actions.deleteArtifact({
+    const response = await github.actions.listWorkflowRunArtifacts({
       owner,
       repo,
-      artifact_id: artifactId
+      run_id: runId
     });
 
     console.log('response', response);
