@@ -7959,10 +7959,9 @@ async function run() {
     const { owner, repo } = context.repo;
 
     const runId = parseInt(core.getInput('run_id', { required: true }));
-    const accessToken = core.getInput('access_token', { required: true });
     const artifactName = core.getInput('name', { required: true });
 
-    const github = new GitHub(accessToken);
+    const github = new GitHub(process.env.GITHUB_TOKEN);
 
     const response = await github.actions.listWorkflowRunArtifacts({
       owner,
