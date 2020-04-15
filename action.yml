@@ -1,0 +1,13 @@
+name: 'Delete an Artifact'
+description: 'Delete a GitHub Actions Artifact'
+author: 'NFIBrokerage'
+inputs:
+  name:
+    description: 'The name of the artifact to delete'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'trash-2'
+  color: 'purple'
