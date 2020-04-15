@@ -4,7 +4,7 @@
   "description": "A GitHub action for deleting artifacts",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint 'src/**.js' 'test/**.js' --fix",
+    "lint": "eslint 'src/**.js' --fix",
     "test": "eslint 'src/**.js' 'test/**.js' && jest --coverage",
     "build": "ncc build src/main.js"
   },

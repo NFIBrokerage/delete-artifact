@@ -28,12 +28,10 @@ async function run() {
       run_id: runId
     });
 
-    const numberDeleted =
-      response.data.artifacts
-        .filter(artifact => artifact.name == artifactName)
-        .map(artifact => artifact.id)
-        .map(artifactId => deleteArtifact(github, owner, repo, artifactId))
-        .length;
+    const numberDeleted = response.data.artifacts
+      .filter(artifact => artifact.name === artifactName)
+      .map(artifact => artifact.id)
+      .map(artifactId => deleteArtifact(github, owner, repo, artifactId)).length;
 
     console.log('Number of artifacts deleted:', numberDeleted);
   } catch (error) {
