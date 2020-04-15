@@ -15,3 +15,5 @@ jobs:
       with:
         run_id: ${{ github.run_id }}
         name: "release-artifact"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
