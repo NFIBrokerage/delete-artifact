@@ -12,7 +12,7 @@ inputs:
     description: 'The name of the artifact to delete'
     required: true
 outputs:
-  artifactsDeleted:
+  artifacts_deleted:
     description: 'Number of artifacts deleted by the action'
 runs:
   using: 'node12'

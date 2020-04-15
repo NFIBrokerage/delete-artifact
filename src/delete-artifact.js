@@ -29,10 +29,14 @@ async function run() {
       run_id: runId
     });
 
-    response.data.artifacts
-      .filter(artifact => artifact.name == artifactName)
-      .map(artifact => artifact.id)
-      .forEach(artifactId => deleteArtifact(github, owner, repo, artifactId));
+    const numberDeleted =
+      response.data.artifacts
+        .filter(artifact => artifact.name == artifactName)
+        .map(artifact => artifact.id)
+        .map(artifactId => deleteArtifact(github, owner, repo, artifactId))
+        .length;
+
+    core.setOutput('artifacts_deleted', numberDeleted);
   } catch (error) {
     core.setFailed(error.message);
   }
