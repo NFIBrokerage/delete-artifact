@@ -5,6 +5,9 @@ inputs:
   run_id:
     description: 'The name of the artifact to delete'
     required: true
+  access_token:
+    description: 'The access token'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

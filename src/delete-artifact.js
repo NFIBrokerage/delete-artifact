@@ -3,13 +3,12 @@ const { GitHub, context } = require('@actions/github');
 
 async function run() {
   try {
-    const github = new GitHub(process.env.GITHUB_TOKEN);
-
-    console.log('context', context);
-
     const { owner, repo } = context.repo;
 
     const runId = core.getInput('run_id', { required: true });
+    const accessToken = core.getInput('access_token', { required: true });
+
+    const github = new GitHub(accessToken);
 
     const response = await github.actions.listWorkflowRunArtifacts({
       owner,
