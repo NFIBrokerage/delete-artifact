@@ -7942,12 +7942,25 @@ module.exports = (promise, onFinally) => {
 const core = __webpack_require__(470);
 const { GitHub, context } = __webpack_require__(469);
 
+async function deleteArtifact(github, owner, repo, artifactId) {
+  try {
+    await github.actions.deleteArtifact({
+      owner,
+      repo,
+      artifact_id: artifactId
+    });
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
+
 async function run() {
   try {
     const { owner, repo } = context.repo;
 
-    const runId = core.getInput('run_id', { required: true });
+    const runId = parseInt(core.getInput('run_id', { required: true }));
     const accessToken = core.getInput('access_token', { required: true });
+    const artifactName = core.gitInput('name', { required: true });
 
     const github = new GitHub(accessToken);
 
@@ -7957,7 +7970,10 @@ async function run() {
       run_id: runId
     });
 
-    console.log('response', response);
+    response.data.artifacts
+      .filter(artifact => artifact.name == artifactName)
+      .map(artifact => artifact.id)
+      .forEach(artifactId => deleteArtifact(github, owner, repo, artifactId));
   } catch (error) {
     core.setFailed(error.message);
   }
