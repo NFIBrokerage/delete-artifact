@@ -38,4 +38,7 @@ steps:
   uses: NFIBrokerage/delete-artifact@v1
   with:
     name: my-artifact
+    run_id: ${{ github.run_id }}
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
