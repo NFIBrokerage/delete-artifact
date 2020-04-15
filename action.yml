@@ -3,7 +3,7 @@ description: 'Delete a GitHub Actions Artifact'
 author: 'NFIBrokerage'
 inputs:
   run_id:
-    description: 'The run_id of the workflow (${{ github.run_id }})'
+    description: 'The run_id of the workflow (github.run_id)'
     required: true
   access_token:
     description: 'The access token'
