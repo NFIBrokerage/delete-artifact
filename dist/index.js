@@ -9925,6 +9925,8 @@ async function run() {
       repo
     });
 
+    console.log('artifacts:', response.data.artifacts);
+
     const numberDeleted = response.data.artifacts
       .filter(artifact => artifact.name === artifactName)
       .map(artifact => artifact.id)
