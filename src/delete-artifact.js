@@ -36,9 +36,7 @@ async function run() {
         .map(artifactId => deleteArtifact(github, owner, repo, artifactId))
         .length;
 
-    console.log('number deleted:', numberDeleted);
-
-    core.setOutput('artifacts_deleted', numberDeleted);
+    console.log('Number of artifacts deleted:', numberDeleted);
   } catch (error) {
     core.setFailed(error.message);
   }
