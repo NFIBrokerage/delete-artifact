@@ -7960,7 +7960,7 @@ async function run() {
 
     const runId = parseInt(core.getInput('run_id', { required: true }));
     const accessToken = core.getInput('access_token', { required: true });
-    const artifactName = core.gitInput('name', { required: true });
+    const artifactName = core.getInput('name', { required: true });
 
     const github = new GitHub(accessToken);
 
